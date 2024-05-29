@@ -1,0 +1,36 @@
+body {
+  background-color: #000;
+  color: #0f0;
+  font-family: monospace;
+  overflow: hidden;
+}
+
+.matrix-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.matrix-column {
+  position: relative;
+  width: 10px;
+  margin: 0 5px;
+}
+
+.matrix-char {
+  position: absolute;
+  left: 0;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.matrix-char.show {
+  opacity: 1;
+}
