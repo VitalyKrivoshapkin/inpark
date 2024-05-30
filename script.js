@@ -1,34 +1,38 @@
-const canvas = document.getElementById('matrixCanvas');
-const ctx = canvas.getContext('2d');
+const pokemonName = document.getElementById('pokemon-name');
+const pokemonImage = document.getElementById('pokemon-image');
+const hpStat = document.getElementById('hp');
+const attackStat = document.getElementById('attack');
+const defenseStat = document.getElementById('defense');
+const spAtkStat = document.getElementById('sp-atk');
+const spDefStat = document.getElementById('sp-def');
+const speedStat = document.getElementById('speed');
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+const totalPokemon = 1010; // Update this if more Pokémon are added
 
-const characters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-=+*/#$@%&';
-const fontSize = 10;
-const columns = canvas.width / fontSize;
+function getPokemonOfTheDay() {
+    const today = new Date();
+    const seed = today.getFullYear() * 10000 + 
+                 (today.getMonth() + 1) * 100 + 
+                 today.getDate();
+    const pokemonId = (seed % totalPokemon) + 1; // Ensure ID is within range
 
-const drops = [];
-for (let i = 0; i < columns; i++) {
-    drops[i] = 1; // Initialize drop positions
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
+        .then(response => response.json())
+        .then(data => {
+            pokemonName.textContent = data.name;
+            pokemonImage.src = data.sprites.front_default;
+
+            hpStat.textContent = data.stats[0].base_stat;
+            attackStat.textContent = data.stats[1].base_stat;
+            defenseStat.textContent = data.stats[2].base_stat;
+            spAtkStat.textContent = data.stats[3].base_stat;
+            spDefStat.textContent = data.stats[4].base_stat;
+            speedStat.textContent = data.stats[5].base_stat;
+        })
+        .catch(error => {
+            console.error("Error fetching Pokémon:", error);
+            pokemonName.textContent = "Error!";
+        });
 }
 
-function draw() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // Slightly transparent black
-    ctx.fillRect(0, 0, canvas.width, canvas.height); // "Fade" previous text
-
-    ctx.fillStyle = '#0f0'; // Green text
-    ctx.font = fontSize + 'px monospace';
-
-    for (let i = 0; i < drops.length; i++) {
-        const text = characters.charAt(Math.floor(Math.random() * characters.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-            drops[i] = 0; // Reset drop to the top
-        }
-        drops[i]++;
-    }
-}
-
-setInterval(draw, 33); // Roughly 30 frames per second
+getPokemonOfTheDay();

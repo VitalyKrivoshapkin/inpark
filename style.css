@@ -1,10 +1,36 @@
 body {
-    background-color: #000; /* Black background */
+    background-color: #7858A6; /* Purple background */
+    font-family: 'Press Start 2P', cursive;
+    color: #f0c030; /* Yellow foreground */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     margin: 0;
-    overflow: hidden; /* Hide scrollbars */
-    font-family: monospace;
 }
 
-#matrixCanvas {
-    display: block; /* Prevent space below canvas */
+.pokedex {
+    background-color: #ff0000; /* Red Pokedex color */
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.pokedex-screen {
+    background-color: #ffffff; /* White screen */
+    padding: 20px;
+    border-radius: 15px;
+}
+
+#pokemon-image {
+    width: 200px;
+    height: auto;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
 }
