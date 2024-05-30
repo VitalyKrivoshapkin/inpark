@@ -1,36 +1,49 @@
 body {
-    background-color: #7858A6; /* Purple background */
-    font-family: 'Press Start 2P', cursive;
-    color: #f0c030; /* Yellow foreground */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
+    font-family: sans-serif;
 }
 
-.pokedex {
-    background-color: #ff0000; /* Red Pokedex color */
-    border-radius: 20px;
+.calendar-container {
+    width: 500px;
+    margin: 50px auto;
+    background-color: #f5f5f5;
+    border-radius: 8px;
     padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
     text-align: center;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
 }
 
-.pokedex-screen {
-    background-color: #ffffff; /* White screen */
-    padding: 20px;
-    border-radius: 15px;
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-#pokemon-image {
-    width: 200px;
-    height: auto;
+th, td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
 }
 
-.stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 20px;
+th {
+    background-color: #f0f0f0;
+}
+
+.today {
+    background-color: #e0f0ff;
+}
+
+.user-info {
+    font-size: 12px;
+    color: #666;
+}
+
+.home {
+    color: green;
+}
+
+.office {
+    color: blue;
 }
