@@ -1,41 +1,10 @@
 body {
-  background-color: #000;
-  color: #0f0;
-  font-family: monospace;
-  overflow: hidden;
+    background-color: #000; /* Black background */
+    margin: 0;
+    overflow: hidden; /* Hide scrollbars */
+    font-family: monospace;
 }
 
-.matrix-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-around;
-}
-
-.matrix-column {
-  position: relative;
-  width: 10px;
-  height: 100%;
-}
-
-.matrix-char {
-  position: absolute;
-  left: 0;
-  font-size: 12px;
-  opacity: 0;
-  animation: matrix-animation 4s linear infinite;
-}
-
-@keyframes matrix-animation {
-  0% {
-    top: -20px;
-    opacity: 1;
-  }
-  100% {
-    top: 100%;
-    opacity: 0;
-  }
+#matrixCanvas {
+    display: block; /* Prevent space below canvas */
 }
